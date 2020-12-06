@@ -1,3 +1,5 @@
+import errors.NoSuchSeatException;
+
 public class Hall {
 
 	private final char[][] location;
@@ -11,6 +13,10 @@ public class Hall {
 		fill();
 	}
 
+	public char[][] getLocation() {
+		return location;
+	}
+
 	public int getRowsNumber() {
 		return rowsNumber;
 	}
@@ -20,15 +26,25 @@ public class Hall {
 	}
 
 	public boolean wasSold(int row, int seat) {
-		return location[row][seat] == 'B';
+		if (isExists(row, seat)) {
+			return location[row][seat] == 'B';
+		} else {
+			return true;
+		}
 	}
 
 	public void markAsSold(int row, int seat) {
-		location[row][seat] = 'B';
+		if (isExists(row, seat)) {
+			location[row][seat] = 'B';
+		}
 	}
 
-	public char getCoordinateValue(int row, int seat) {
-		return location[row][seat];
+	public char getCoordinateValue (int row, int seat) throws NoSuchSeatException {
+		if (isExists(row, seat)) {
+			return location[row][seat];
+		} else {
+			throw  new NoSuchSeatException("Wrong input!");
+		}
 	}
 
 	public boolean isExists(int row, int seat) {

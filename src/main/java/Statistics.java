@@ -2,8 +2,8 @@ import java.util.Locale;
 
 public class Statistics {
 
-	private static int soldTicketNum;
-	private static int soldTicketPrice;
+	private int soldTicketNum;
+	private int soldTicketPrice;
 
 	private final int totalPrice;
 	private final int rowsNum;
@@ -18,11 +18,11 @@ public class Statistics {
 				: ((rowsNum - middle) * 10 + middle * 8) * seatsNum;
 	}
 
-	public static void incrementSoldTicketNum() {
+	public void incrementSoldTicketNum() {
 		soldTicketNum ++;
 	}
 
-	public static void addSoldTicketNum(int sum) {
+	public void addSoldTicketNum(int sum) {
 		soldTicketPrice += sum;
 	}
 
